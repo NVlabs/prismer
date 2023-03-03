@@ -1,0 +1,28 @@
+_BASE_: "Base-CRCNN-COCO.yaml"
+MODEL:
+  META_ARCHITECTURE: "SplitClassifierRCNN"
+  ROI_HEADS:
+    NUM_CLASSES: -1
+    NAME: "MultiDatasetCascadeROIHeads"
+  ROI_BOX_HEAD:
+    USE_SIGMOID_CE: True
+    # USE_EQL_LOSS: True
+    HIERARCHY_IGNORE: True
+    HIERARCHY_POS_PARENTS: True
+DATASETS:
+  TRAIN: ("coco_2017_train","objects365_train","oid_train",)
+  TEST: ('coco_2017_val','oid_val_expanded','objects365_val',)
+DATALOADER:                                                                                                                                                                                                                                                                                                                                                                 
+  SAMPLER_TRAIN: "MultiDatasetSampler"
+  NUM_WORKERS: 1
+MULTI_DATASET:
+  ENABLED: True
+  DATASETS: ['coco', 'objects365', 'oid']
+  NUM_CLASSES: [80, 365, 500]
+  DATA_RATIO: [1, 1, 1]
+  USE_CAS: [False, True, True]
+SOLVER:
+  IMS_PER_BATCH: 16
+  STEPS: (480000, 500000)
+  MAX_ITER: 540000
+  CHECKPOINT_PERIOD: 120000

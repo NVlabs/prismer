@@ -1,0 +1,48 @@
+coco:
+  dataset: 'coco'
+  data_path: '/workspace_dataset/dataset_vqa'
+  label_path: '/workspace_dataset/dataset_experts'
+  experts: ['depth', 'normal', 'seg_coco', 'edge', 'obj_detection', 'ocr_detection']  # 'none' for PrismerZ
+  image_resolution: 480
+  prismer_model: 'prismer_base'
+  freeze: 'freeze_vision'
+
+  batch_size_train: 4  # for 8 * 8 nodes [effective batch-size: 256]
+  batch_size_test: 8
+  init_lr: 5e-5
+  weight_decay: 0.05
+  min_lr: 0
+  max_epoch: 3
+
+  prefix: 'A picture of'  # use prefix for fine-tuning or no pre-fix '' for zero-shot experiments
+
+nocaps:
+  dataset: 'nocaps'
+  data_path: '/workspace_dataset/dataset_vqa'
+  label_path: '/workspace_dataset/dataset_experts'
+  experts: ['depth', 'normal', 'seg_coco', 'edge', 'obj_detection', 'ocr_detection']  # 'none' for PrismerZ
+
+  image_resolution: 480
+  prismer_model: 'prismer_base'
+  freeze: 'freeze_vision'
+
+  batch_size_train: 4  # for 8 * 8 nodes [effective batch-size: 256]
+  batch_size_test: 8
+  init_lr: 5e-5
+  weight_decay: 0.05
+  min_lr: 0
+  max_epoch: 3
+
+  prefix: 'A picture of' # use prefix for fine-tuning or no pre-fix '' for zero-shot experiments
+
+demo:
+  dataset: 'demo'
+  data_path: 'helpers'
+  label_path: 'helpers/labels'
+  experts: ['depth', 'normal', 'seg_coco', 'edge', 'obj_detection', 'ocr_detection']  # 'none' for PrismerZ
+
+  image_resolution: 480
+  prismer_model: 'prismer_base'
+  freeze: 'freeze_vision'
+
+  prefix: 'A picture of'

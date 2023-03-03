@@ -1,0 +1,18 @@
+datasets: ['vqav2', 'vg']
+data_path: '/workspace_dataset/dataset_vqa'
+label_path: '/workspace_dataset/dataset_experts'
+experts: ['depth', 'normal', 'seg_coco', 'edge', 'obj_detection', 'ocr_detection']     # 'none' for PrismerZ
+
+image_resolution: 480
+prismer_model: 'prismer_base'
+freeze: 'freeze_vision'
+
+batch_size_train: 8   #   for 8 * 8 nodes [effective batch-size: 512]
+batch_size_test: 32
+init_lr: 5e-5
+weight_decay: 0.05
+min_lr: 0
+max_epoch: 10
+
+k_test: 16
+inference: 'rank'

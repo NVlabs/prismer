@@ -1,0 +1,21 @@
+data_path: '/workspace_dataset/dataset_zero'
+label_path: '/workspace_dataset/dataset_experts'
+
+experts: ['depth', 'normal', 'seg_coco', 'edge', 'obj_detection', 'ocr_detection']   # 'none' for PrismerZ
+
+freeze: 'freeze_vision'
+dataset: 'imagenet'
+shots: 1
+
+image_resolution: 384
+prismer_model: 'prismer_base'
+
+batch_size_train: 2  # for 4 * 8 nodes [effective batch-size: 64]
+batch_size_test: 8
+init_lr: 5e-5
+weight_decay: 0.05
+min_lr: 0
+max_epoch: 20
+
+k_test: 32
+prefix: 'A photo of a'

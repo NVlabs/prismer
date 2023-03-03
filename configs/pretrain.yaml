@@ -1,0 +1,21 @@
+datasets: ['cc12m', 'cc3m_sgu', 'coco', 'vg']
+
+cc12m_data_path: '/workspace_dataset/cc12m'
+cc3m_data_path: '/home/datasets/cc3m'
+coco_data_path: '/workspace_dataset/dataset_vqa'
+vg_data_path: '/home/datasets/vqa'
+label_path: '/workspace_dataset/dataset_experts'
+
+experts: ['depth', 'normal', 'seg_coco', 'edge', 'obj_detection', 'ocr_detection']    # 'none' for PrismerZ
+
+image_resolution: 224
+prismer_model: 'prismer_base'
+freeze: 'freeze_lang_vision'
+batch_size_train: 32  #   for 4 * 8 nodes [effective batch-size: 1024]
+
+max_epoch: 20
+weight_decay: 0.05
+init_lr: 3e-4  # 1e-4 for prismer_large
+min_lr: 1e-6
+warmup_lr: 1e-6
+warmup_steps: 2000

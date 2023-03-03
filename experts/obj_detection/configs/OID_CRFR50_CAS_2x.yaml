@@ -1,0 +1,22 @@
+_BASE_: "Base-CRCNN-COCO"
+MODEL:
+  ROI_HEADS:
+    NUM_CLASSES: 500
+  ROI_BOX_HEAD:
+    USE_SIGMOID_CE: True
+    USE_EQL_LOSS: True
+    EQL_FREQ_CAT: 200
+    EQL_CAT_INFO: 'datasets/oid/annotations/openimages_challenge_2019_train_v2_cat_info.json'
+    HIERARCHY_IGNORE: True
+    HIERARCHY_POS_PARENTS: True
+DATASETS:
+  TRAIN: ("oid_train",)
+  TEST: ("oid_val_expanded",)
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.01
+  STEPS: (120000, 160000,)
+  MAX_ITER: 180000
+  CHECKPOINT_PERIOD: 120000
+DATALOADER:
+  SAMPLER_TRAIN: "ClassAwareSampler"

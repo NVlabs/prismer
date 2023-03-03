@@ -1,0 +1,4 @@
+CHAR_DICT_FILE: "experts/ocr_detection/datasets/ICDAR2015/test/char_dict.txt"
+WORD_LEXICON_PATH: "experts/ocr_detection/datasets/ICDAR2015/test/words.txt"
+RESULTS_SEPARATOR: ","
+SIZE_DIVISIBILITY: 128
