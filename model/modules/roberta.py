@@ -3,6 +3,7 @@
 # This work is made available under the Nvidia Source Code License-NC.
 # To view a copy of this license, visit
 # https://github.com/NVlabs/prismer/blob/main/LICENSE
+# Modified from: https://github.com/huggingface/transformers/blob/main/src/transformers/models/roberta/modeling_roberta.py
 
 import math
 from typing import Optional, Tuple, Union

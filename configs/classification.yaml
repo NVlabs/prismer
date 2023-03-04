@@ -8,7 +8,7 @@ dataset: 'imagenet'
 shots: 1
 
 image_resolution: 384
-prismer_model: 'prismer_base'
+prismer_model: 'prismer_base'  # 'prismer-large' for Prismer(Z)-Large
 
 batch_size_train: 2  # for 4 * 8 nodes [effective batch-size: 64]
 batch_size_test: 8

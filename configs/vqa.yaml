@@ -4,7 +4,7 @@ label_path: '/workspace_dataset/dataset_experts'
 experts: ['depth', 'normal', 'seg_coco', 'edge', 'obj_detection', 'ocr_detection']     # 'none' for PrismerZ
 
 image_resolution: 480
-prismer_model: 'prismer_base'
+prismer_model: 'prismer_base'  # 'prismer-large' for Prismer(Z)-Large
 freeze: 'freeze_vision'
 
 batch_size_train: 8   #   for 8 * 8 nodes [effective batch-size: 512]

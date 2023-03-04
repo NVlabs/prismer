@@ -3,6 +3,7 @@
 # This work is made available under the Nvidia Source Code License-NC.
 # To view a copy of this license, visit
 # https://github.com/NVlabs/prismer/blob/main/LICENSE
+# Modified from: https://github.com/openai/CLIP/blob/main/clip/model.py
 
 from collections import OrderedDict
 from einops import rearrange
