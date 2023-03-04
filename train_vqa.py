@@ -95,7 +95,10 @@ if not args.from_checkpoint:
     start_epoch = 0
 else:
     state_dict = torch.load(f'logging/vqa_{args.exp_name}/pytorch_model.bin', map_location='cpu')
-    start_epoch = torch.load(f'logging/vqa_{args.exp_name}/epoch.pt')[0] + 1
+    if os.path.exists(f'logging/vqa_{args.exp_name}/epoch.pt'):
+        start_epoch = torch.load(f'logging/vqa_{args.exp_name}/epoch.pt')[0] + 1
+    else:
+        start_epoch = 0
     model.load_state_dict(state_dict)
     accelerator.print(f'Start re-training from checkpoint with Epoch {start_epoch}')
 
