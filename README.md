@@ -134,7 +134,7 @@ The model checkpoints are shared under CC-BY-NC-SA-4.0. If you remix, transform,
 For business inquiries, please visit our website and submit the form: [NVIDIA Research Licensing](https://www.nvidia.com/en-us/research/inquiries/).
 
 ## Acknowledgement
-We would like to thank all the authors open-sourcing their pre-trained models to make this project possible.
+We would like to thank all the researchers who open source their works to make this project possible.
 
 ## Contact
 If you have any questions, please contact `sk.lorenmt@gmail.com`.
