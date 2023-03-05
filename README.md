@@ -59,7 +59,7 @@ accelerate experts/generate_{EXPERT_NAME}.py
 *Note: Expert label generation is only required for Prismer models, not for PrismerZ models.*
 
 ## Experiments
-We have provided both Prismer and PrismerZ for pre-training checkpoints (for zero-shot image captioning), as well as fined-tuning checkpoints on VQAv2 and COCO datasets. With these checkpoints, it should be expected to reproduce the exact performance listed below.
+We have provided both Prismer and PrismerZ for pre-trainedcheckpoints (for zero-shot image captioning), as well as fined-tuned checkpoints on VQAv2 and COCO datasets. With these checkpoints, it should be expected to reproduce the exact performance listed below.
 
 | Model          | Pre-trained [Zero-shot] | COCO [Fine-tuned]   | VQAv2 [Fine-tuned] |
 |----------------|-------------------------|---------------------|-------------------|
@@ -70,7 +70,7 @@ We have provided both Prismer and PrismerZ for pre-training checkpoints (for zer
 
 All fine-tuned Prismer and PrismerZ checkpoints can be downloaded [here](https://huggingface.co/lorenmt/prismer/tree/main), and put them under the `logging` folder.
 
-*Note: Remember to install java via `sudo apt-get install default-jre` which is required to evaluate COCO captioning performance.*
+*Note: Remember to install java via `sudo apt-get install default-jre` which is required to run the official COCO caption evaluation scripts.*
 
 
 ### Evaluation
@@ -87,7 +87,7 @@ python train_vqa.py --exp_name {MODEL_NAME} --from_checkpoint --evaluate
 ```
 
 ### Training / Fine-tuning
-To pre-train or fine-tune any model checkpoints, please run
+To pre-train or fine-tune any model with or without checkpoints, please run
 ```bash
 # to train/fine-tuning from scratch
 python train_{TASK}.py --exp_name {MODEL_NAME}
@@ -96,12 +96,12 @@ python train_{TASK}.py --exp_name {MODEL_NAME}
 python train_{TASK}.py --exp_name {MODEL_NAME} --from_checkpoint 
 ```
 
-We have included model sharding in the current training script via PyTorch's official [FSDP plugin](https://pytorch.org/tutorials/intermediate/FSDP_tutorial.html). With the same training commands, additionally add `--shard_grad_op` for ZeRO-2 Sharding (Gradients + Optimiser States), or `--full_shard` for ZeRO-3 Sharding (ZeRO-2 + Network Parameters). 
+We have also included model sharding in the current training script via PyTorch's official [FSDP plugin](https://pytorch.org/tutorials/intermediate/FSDP_tutorial.html). With the same training commands, additionally add `--shard_grad_op` for ZeRO-2 Sharding (Gradients + Optimiser States), or `--full_shard` for ZeRO-3 Sharding (ZeRO-2 + Network Parameters). 
 
 *Note: You should expect the error range for VQAv2 Acc. to be less than 0.1; for COCO/NoCAPs CIDEr score to be less than 1.0.*
 
 ## Demo
-Finally, we offer a minimalist example to perform image captioning in a single GPU with our fine-tuned Prismer/PrismerZ checkpoint. Simply put your images under `helpers/images` (`.jpg` images), and run
+Finally, we have offered a minimalist example to perform image captioning in a single GPU with our fine-tuned Prismer/PrismerZ checkpoint. Simply put your images under `helpers/images` (`.jpg` images), and run
 ```bash
 python demo.py --exp_name {MODEL_NAME}
 ```
