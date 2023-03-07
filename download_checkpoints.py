@@ -71,10 +71,14 @@ def download_checkpoints(
             )
             total_size += get_hf_file_metadata(url).size
         progress.print(f"[blue]Total download size: {total_size / 1e9:.2f} GB")
+
+        
         total_files = len(download_experts) + len(download_models)
         progress.add_task(f"[green]Downloading files", total=total_files)
         if download_experts:
-            expert_task = progress.add_task(f"[green]Downloading experts...", total=len(download_experts))
+            expert_task = progress.add_task(
+                f"[green]Downloading experts...", total=len(download_experts)
+                )
             for expert in download_experts:
                 path = Path(hf_hub_download(
                     filename=expert,
@@ -85,15 +89,17 @@ def download_checkpoints(
                 path.unlink()
                 progress.advance(expert_task)
         if download_models:
-            model_task = progress.add_task(f"[green]Downloading models...", total=len(download_models))
+            model_task = progress.add_task(
+                f"[green]Downloading models...", total=len(download_models)
+                )
             for model in download_models:
                 path = Path(hf_hub_download(
                     filename=f"pytorch_model.bin",
                     repo_id=_REPO_ID,
                     subfolder=model
                 ))
-                out_path = Path(f"{model}/pytorch_model.bin")
-                path.resolve().rename(out_path)
+                out_folder = Path("./logging")/model
+                path.resolve().rename(out_folder/"pytorch_model.bin")
                 path.unlink()
                 progress.advance(model_task)
         progress.print("[green]Done!")
