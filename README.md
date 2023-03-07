@@ -1,6 +1,6 @@
 # Prismer
 
-This repository contains the source code of **Prismer** and **PrismerZ** from the paper, [Prismer: A vision-Language Model with An Ensemble of Experts](https://shikun.io/projects/prismer).
+This repository contains the source code of **Prismer** and **PrismerZ** from the paper, [Prismer: A Vision-Language Model with An Ensemble of Experts](https://arxiv.org/abs/2303.02506).
 
 <img src="helpers/intro.png"  width="100%"/>
 
@@ -119,7 +119,7 @@ If you found this code/work to be useful in your own research, please considerin
 @article{liu2023prismer,
     title={Prismer: A Vision-Language Model with An Ensemble of Experts},
     author={Liu, Shikun and Fan, Linxi and Johns, Edward and Yu, Zhiding and Xiao, Chaowei and Anandkumar, Anima},
-    journal={arXiv preprint arXiv:TODO},
+    journal={arXiv preprint arXiv:2303.02506},
     year={2023}
 }
 ```
