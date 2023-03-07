@@ -45,7 +45,7 @@ We evaluate image captioning performance on two datasets, COCO 2014 and NoCaps; 
 - [VQAv2](https://www.dropbox.com/sh/hqtxl1k8gkbhhoi/AACiax5qi7no3pJgO1E57Xefa?dl=0): including VQAv2 and VG QA.
 
 ## Generating Expert Labels
-Before starting any experiments with Prismer, we need to first pre-generate the modality expert labels, so we may construct a multi-label dataset. In `experts` folder, we have included all 6 experts we introduced in our paper. We have organised each expert's codebase with a shared and simple APIs.
+Before starting any experiments with Prismer, we need to first pre-generate the modality expert labels, so we may construct a multi-label dataset. In `experts` folder, we have included all 6 experts we introduced in our paper. We have organised each expert's codebase with a shared and simple API.
 
 *Note: Specifically for segmentation experts, please first install deformable convolution operations by `cd experts/segmentation/mask2former/modeling/pixel_decoder/ops` and run `sh make.sh`.*
 
@@ -59,7 +59,7 @@ accelerate experts/generate_{EXPERT_NAME}.py
 *Note: Expert label generation is only required for Prismer models, not for PrismerZ models.*
 
 ## Experiments
-We have provided both Prismer and PrismerZ for pre-trainedcheckpoints (for zero-shot image captioning), as well as fined-tuned checkpoints on VQAv2 and COCO datasets. With these checkpoints, it should be expected to reproduce the exact performance listed below.
+We have provided both Prismer and PrismerZ for pre-trained checkpoints (for zero-shot image captioning), as well as fined-tuned checkpoints on VQAv2 and COCO datasets. With these checkpoints, it should be expected to reproduce the exact performance listed below.
 
 | Model          | Pre-trained [Zero-shot] | COCO [Fine-tuned]   | VQAv2 [Fine-tuned] |
 |----------------|-------------------------|---------------------|-------------------|
