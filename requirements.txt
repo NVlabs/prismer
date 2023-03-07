@@ -13,3 +13,6 @@ pyclipper
 yacs
 pycocotools
 geffnet
+fire
+huggingface_hub
+rich
