@@ -3,6 +3,7 @@ from huggingface_hub.utils import disable_progress_bars
 from pathlib import Path
 from rich.progress import Progress
 from fire import Fire
+from typing import Union, List
 
 _EXPERTS = [
     "10_model.pth",
@@ -32,21 +33,23 @@ _MODELS = [
 _REPO_ID = "lorenmt/prismer"
 
 def download_checkpoints(
-        download_experts=True,
-        download_models=["vqa_prismerz_base", "caption_prismerz_base"],
-        hide_tqdm=False,
-        force_redownload=False,
+        download_experts: bool = True,
+        download_models: Union[bool, List] = ["vqa_prismerz_base", "caption_prismerz_base"],
+        hide_tqdm: bool = False,
+        force_redownload: bool = False,
 ):
     if hide_tqdm:
         disable_progress_bars()
 
+    # Convert to list and check for invalid names
     download_experts = _EXPERTS if download_experts else []
     if download_models:
         assert all([m in _MODELS for m in download_models]), f"Invalid model name. Must be one of {_MODELS}"
-        download_models = _MODELS
+        download_models = _MODELS if isinstance(download_models, bool) else download_models
     else:
         download_models = []
 
+    # Check if files already exist
     if not force_redownload:
         download_experts = [e for e in download_experts if not Path(f"./experts/{e}").exists()]
         download_models = [m for m in download_models if not Path(f"{m}/pytorch_model.bin").exists()]
@@ -54,6 +57,7 @@ def download_checkpoints(
     assert download_experts or download_models, "Nothing to download."
 
     with Progress() as progress:
+        # Calculate total download size
         progress.print("[blue]Calculating download size...")
         total_size = 0
         for expert in download_experts:
@@ -72,9 +76,9 @@ def download_checkpoints(
             total_size += get_hf_file_metadata(url).size
         progress.print(f"[blue]Total download size: {total_size / 1e9:.2f} GB")
 
-        
+        # Download files
         total_files = len(download_experts) + len(download_models)
-        progress.add_task(f"[green]Downloading files", total=total_files)
+        total_task = progress.add_task(f"[green]Downloading files", total=total_files)
         if download_experts:
             expert_task = progress.add_task(
                 f"[green]Downloading experts...", total=len(download_experts)
@@ -88,6 +92,7 @@ def download_checkpoints(
                 path.resolve().rename(f"./experts/{path.name}")
                 path.unlink()
                 progress.advance(expert_task)
+                progress.advance(total_task)
         if download_models:
             model_task = progress.add_task(
                 f"[green]Downloading models...", total=len(download_models)
@@ -99,11 +104,12 @@ def download_checkpoints(
                     subfolder=model
                 ))
                 out_folder = Path("./logging")/model
+                out_folder.mkdir(parents=True, exist_ok=True)
                 path.resolve().rename(out_folder/"pytorch_model.bin")
                 path.unlink()
                 progress.advance(model_task)
+                progress.advance(total_task)
         progress.print("[green]Done!")
 
 if __name__ == "__main__":
     Fire(download_checkpoints)
-
