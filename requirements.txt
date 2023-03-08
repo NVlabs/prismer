@@ -16,3 +16,4 @@ geffnet
 fire
 huggingface_hub
 rich
+ruamel.yaml
