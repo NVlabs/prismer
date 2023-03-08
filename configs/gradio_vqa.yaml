@@ -1,8 +1,0 @@
-experts: ['none']     # 'none' for PrismerZ
-
-image_resolution: 480
-prismer_model: 'prismer_base'  # 'prismer-large' for Prismer(Z)-Large
-inference: 'generate'
-
-freeze: 'freeze_vision'
-
