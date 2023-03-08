@@ -5,14 +5,17 @@
 # https://github.com/NVlabs/prismer/blob/main/LICENSE
 
 import argparse
-import ruamel_yaml as yaml
 import numpy as np
 import random
 import time
 import datetime
 import functools
 import torch
-
+try:
+    import ruamel_yaml as yaml
+except ModuleNotFoundError:
+    import ruamel.yaml as yaml
+    
 from accelerate import Accelerator, FullyShardedDataParallelPlugin
 from model.prismer_vqa import PrismerVQA
 from model.modules.utils import interpolate_pos_embed

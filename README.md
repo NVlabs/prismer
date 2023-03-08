@@ -49,7 +49,10 @@ Before starting any experiments with Prismer, we need to first pre-generate the 
 
 *Note: Specifically for segmentation experts, please first install deformable convolution operations by `cd experts/segmentation/mask2former/modeling/pixel_decoder/ops` and run `sh make.sh`.*
 
-First to download all pre-trained experts checkpoints [here](https://huggingface.co/lorenmt/prismer/tree/main/expert_weights), and put the checkpoint folder under `experts` folder.
+To download pre-trained modality experts, run
+```bash
+python download_checkpoints.py --download_experts=True
+```
 
 To generate the expert labels, simply edit the `configs/experts.yaml` with the corresponding data paths, and run
 ```bash
@@ -68,7 +71,15 @@ We have provided both Prismer and PrismerZ for pre-trained checkpoints (for zero
 | PrismerZ-LARGE | COCO CIDEr [124.8]      | COCO CIDEr [135.7]	 | test-dev [77.49]  |
 | Prismer-LARGE  | COCO CIDEr [129.7]      | COCO CIDEr [136.5]	 | test-dev [78.42]  |
 
-All fine-tuned Prismer and PrismerZ checkpoints can be downloaded [here](https://huggingface.co/lorenmt/prismer/tree/main), and put them under the `logging` folder.
+To download pre-trained/fined-tuned checkpoints, run
+```bash
+# to download all model checkpoints (12 models in total)
+python download_checkpoints.py --download_models=True
+
+# to download specific checkpoints (Prismer-Base for fine-tuned VQA) in this example
+python download_checkpoints.py --download_models="vqa_prismer_base"
+```
+
 
 *Note: Remember to install java via `sudo apt-get install default-jre` which is required to run the official COCO caption evaluation scripts.*
 
@@ -134,7 +145,7 @@ The model checkpoints are shared under CC-BY-NC-SA-4.0. If you remix, transform,
 For business inquiries, please visit our website and submit the form: [NVIDIA Research Licensing](https://www.nvidia.com/en-us/research/inquiries/).
 
 ## Acknowledgement
-We would like to thank all the researchers who open source their works to make this project possible.
+We would like to thank all the researchers who open source their works to make this project possible. [@bjoernpl](https://github.com/bjoernpl) for contributing an automated checkpoint download script.
 
 ## Contact
 If you have any questions, please contact `sk.lorenmt@gmail.com`.

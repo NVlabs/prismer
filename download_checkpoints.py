@@ -16,12 +16,12 @@ _EXPERTS = [
 ]
 
 _MODELS = [
+    "vqa_prismer_base",
+    "vqa_prismer_large",
     "vqa_prismerz_base",
     "vqa_prismerz_large",
     "caption_prismerz_base",
     "caption_prismerz_large",
-    "vqa_prismer_base",
-    "vqa_prismer_large",
     "caption_prismer_base",
     "caption_prismer_large",
     "pretrain_prismer_base",
@@ -32,18 +32,22 @@ _MODELS = [
 
 _REPO_ID = "lorenmt/prismer"
 
+
 def download_checkpoints(
-        download_experts: bool = True,
-        download_models: Union[bool, List] = ["vqa_prismerz_base", "caption_prismerz_base"],
+        download_experts: bool = False,
+        download_models: Union[bool, List] = False,
         hide_tqdm: bool = False,
         force_redownload: bool = False,
 ):
     if hide_tqdm:
         disable_progress_bars()
-
     # Convert to list and check for invalid names
     download_experts = _EXPERTS if download_experts else []
     if download_models:
+        # only download single model
+        if isinstance(download_models, str):
+            download_models = [download_models]
+
         assert all([m in _MODELS for m in download_models]), f"Invalid model name. Must be one of {_MODELS}"
         download_models = _MODELS if isinstance(download_models, bool) else download_models
     else:
@@ -51,7 +55,7 @@ def download_checkpoints(
 
     # Check if files already exist
     if not force_redownload:
-        download_experts = [e for e in download_experts if not Path(f"./experts/{e}").exists()]
+        download_experts = [e for e in download_experts if not Path(f"./experts/expert_weights/{e}").exists()]
         download_models = [m for m in download_models if not Path(f"{m}/pytorch_model.bin").exists()]
     
     assert download_experts or download_models, "Nothing to download."
@@ -83,16 +87,19 @@ def download_checkpoints(
             expert_task = progress.add_task(
                 f"[green]Downloading experts...", total=len(download_experts)
                 )
+            out_folder = Path("experts/expert_weights")
+            out_folder.mkdir(parents=True, exist_ok=True)
             for expert in download_experts:
                 path = Path(hf_hub_download(
                     filename=expert,
                     repo_id=_REPO_ID,
                     subfolder="expert_weights"
                 ))
-                path.resolve().rename(f"./experts/{path.name}")
+                path.resolve().rename(out_folder/path.name)
                 path.unlink()
                 progress.advance(expert_task)
                 progress.advance(total_task)
+
         if download_models:
             model_task = progress.add_task(
                 f"[green]Downloading models...", total=len(download_models)
