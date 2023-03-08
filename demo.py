@@ -1,7 +1,11 @@
 import os
 import argparse
 import torch
-import ruamel_yaml as yaml
+try:
+    import ruamel_yaml as yaml
+except ModuleNotFoundError:
+    import ruamel.yaml as yaml
+
 
 from model.prismer_caption import PrismerCaption
 from dataset import create_dataset, create_loader
