@@ -6,7 +6,10 @@
 
 import torch
 import os
-import ruamel_yaml as yaml
+try:
+    import ruamel_yaml as yaml
+except ModuleNotFoundError:
+    import ruamel.yaml as yaml
 
 from experts.model_bank import load_expert_model
 from experts.edge.generate_dataset import Dataset

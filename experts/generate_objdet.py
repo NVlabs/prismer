@@ -6,11 +6,14 @@
 
 import torch
 import os
-import ruamel_yaml as yaml
 import json
 import copy
 import PIL.Image as Image
-
+try:
+    import ruamel_yaml as yaml
+except ModuleNotFoundError:
+    import ruamel.yaml as yaml
+    
 from experts.model_bank import load_expert_model
 from experts.obj_detection.generate_dataset import Dataset, collate_fn
 from accelerate import Accelerator

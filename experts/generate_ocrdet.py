@@ -11,8 +11,10 @@ import numpy as np
 import cv2
 import clip
 import pickle as pk
-import ruamel_yaml as yaml
-
+try:
+    import ruamel_yaml as yaml
+except ModuleNotFoundError:
+    import ruamel.yaml as yaml
 
 from experts.model_bank import load_expert_model
 from experts.ocr_detection.generate_dataset import Dataset
