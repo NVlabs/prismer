@@ -119,6 +119,11 @@ python demo.py --exp_name {MODEL_NAME}
 
 You then can see all generated modality expert labels in the `helpers/labels` folder and the generated captions in the `helpers/images` folder.
 
+Particularly for the Prismer models, we have also offered a simple script to prettify the generated expert labels. To prettify and visualise the expert labels as well as its predicted captions, run
+```bash
+python demo_vis.py
+```
+
 *Note: Remember to set up the corresponding config in the `configs/caption.yaml` demo section. The default demo model config is for Prismer-Base.*
 
 ## Citation

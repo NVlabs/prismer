@@ -34,6 +34,8 @@ class Caption(Dataset):
             elif self.dataset == 'demo':
                 data_folders = glob.glob(f'{self.data_path}/*/')
                 self.data_list = [{'image': data} for f in data_folders for data in glob.glob(f + '*.jpg')]
+                self.data_list += [{'image': data} for f in data_folders for data in glob.glob(f + '*.png')]
+                self.data_list += [{'image': data} for f in data_folders for data in glob.glob(f + '*.jpeg')]
 
     def __len__(self):
         return len(self.data_list)
