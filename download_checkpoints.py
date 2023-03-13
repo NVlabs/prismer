@@ -47,9 +47,11 @@ def download_checkpoints(
         # only download single model
         if isinstance(download_models, str):
             download_models = [download_models]
+        # download all models
+        if isinstance(download_models, bool):
+            download_models = _MODELS
 
         assert all([m in _MODELS for m in download_models]), f"Invalid model name. Must be one of {_MODELS}"
-        download_models = _MODELS if isinstance(download_models, bool) else download_models
     else:
         download_models = []
 
@@ -57,7 +59,7 @@ def download_checkpoints(
     if not force_redownload:
         download_experts = [e for e in download_experts if not Path(f"./experts/expert_weights/{e}").exists()]
         download_models = [m for m in download_models if not Path(f"{m}/pytorch_model.bin").exists()]
-    
+
     assert download_experts or download_models, "Nothing to download."
 
     with Progress() as progress:
