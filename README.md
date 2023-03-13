@@ -3,9 +3,13 @@
  [![Hugginface Space](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-sm-dark.svg)](https://huggingface.co/spaces/lorenmt/prismer)
 
 
-This repository contains the source code of **Prismer** and **PrismerZ** from the paper, [Prismer: A Vision-Language Model with An Ensemble of Experts](https://shikun.io/projects/prismer). Check out our official demo at [HuggingFace Space](https://huggingface.co/spaces/lorenmt/prismer).
+This repository contains the source code of **Prismer** and **PrismerZ** from the paper, [Prismer: A Vision-Language Model with An Ensemble of Experts](https://shikun.io/projects/prismer). Check out our official demo at [HuggingFace Space](https://huggingface.co/spaces/lorenmt/prismer) and a third-party demo at [Replicate](https://replicate.com/cjwbw/prismer).
 
 <img src="helpers/intro.png"  width="100%"/>
+
+### Update Log
+- **TODO**: Improve demo inference speed by caching input images and expert labels via md5sum. 
+- **Mar. 13**: Add official HF Space demo. 
 
 ## Get Started
 The implementation is based on `PyTorch 1.13`, and highly integrated with Huggingface [`accelerate`](https://github.com/huggingface/accelerate) toolkit for readable and optimised multi-node multi-gpu training.
