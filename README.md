@@ -1,6 +1,9 @@
 # Prismer
+[![arXiv](https://img.shields.io/badge/arXiv-2303.02506-b31b1b.svg)](https://arxiv.org/abs/2303.02506)
+ [![Hugginface Space](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-sm-dark.svg)](https://huggingface.co/spaces/lorenmt/prismer/settings)
 
-This repository contains the source code of **Prismer** and **PrismerZ** from the paper, [Prismer: A Vision-Language Model with An Ensemble of Experts](https://arxiv.org/abs/2303.02506).
+
+This repository contains the source code of **Prismer** and **PrismerZ** from the paper, [Prismer: A Vision-Language Model with An Ensemble of Experts](https://shikun.io/projects/prismer). Check out our official demo at [HuggingFace Space](https://huggingface.co/spaces/lorenmt/prismer).
 
 <img src="helpers/intro.png"  width="100%"/>
 
@@ -111,8 +114,8 @@ We have also included model sharding in the current training script via PyTorch'
 
 *Note: You should expect the error range for VQAv2 Acc. to be less than 0.1; for COCO/NoCAPs CIDEr score to be less than 1.0.*
 
-## Demo
-Finally, we have offered a minimalist example to perform image captioning in a single GPU with our fine-tuned Prismer/PrismerZ checkpoint. Simply put your images under `helpers/images` (`.jpg` images), and run
+## A Minimal Example
+Finally, we have offered a minimal example to perform image captioning in a single GPU with our fine-tuned Prismer/PrismerZ checkpoint. Simply put your images under `helpers/images` (support `.jpg`, `.jpeg`, and `.png` images), and run
 ```bash
 python demo.py --exp_name {MODEL_NAME}
 ```
