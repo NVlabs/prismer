@@ -7,7 +7,6 @@ This repository contains the source code of **Prismer** and **PrismerZ** from th
 
 <img src="helpers/intro.png"  width="100%"/>
 
-
 ## Get Started
 The implementation is based on `PyTorch 1.13`, and highly integrated with Huggingface [`accelerate`](https://github.com/huggingface/accelerate) toolkit for readable and optimised multi-node multi-gpu training.
 
