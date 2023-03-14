@@ -95,23 +95,23 @@ python download_checkpoints.py --download_models="vqa_prismer_base"
 To evaluate the model checkpoints, please run
 ```bash
 # zero-shot image captioning (remember to remove caption prefix in the config files)
-python train_caption.py --exp_name {MODEL_NAME} --evaluate
+accelerate train_caption.py --exp_name {MODEL_NAME} --evaluate
 
 # fine-tuned image captioning
-python train_caption.py --exp_name {MODEL_NAME} --from_checkpoint --evaluate
+accelerate train_caption.py --exp_name {MODEL_NAME} --from_checkpoint --evaluate
 
 # fine-tuned VQA
-python train_vqa.py --exp_name {MODEL_NAME} --from_checkpoint --evaluate
+accelerate train_vqa.py --exp_name {MODEL_NAME} --from_checkpoint --evaluate
 ```
 
 ### Training / Fine-tuning
 To pre-train or fine-tune any model with or without checkpoints, please run
 ```bash
 # to train/fine-tuning from scratch
-python train_{TASK}.py --exp_name {MODEL_NAME}
+accelerate train_{TASK}.py --exp_name {MODEL_NAME}
 
 # to train/fine-tuning from the latest checkpoints (saved every epoch)
-python train_{TASK}.py --exp_name {MODEL_NAME} --from_checkpoint 
+accelerate train_{TASK}.py --exp_name {MODEL_NAME} --from_checkpoint 
 ```
 
 We have also included model sharding in the current training script via PyTorch's official [FSDP plugin](https://pytorch.org/tutorials/intermediate/FSDP_tutorial.html). With the same training commands, additionally add `--shard_grad_op` for ZeRO-2 Sharding (Gradients + Optimiser States), or `--full_shard` for ZeRO-3 Sharding (ZeRO-2 + Network Parameters). 
