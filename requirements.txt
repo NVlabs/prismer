@@ -16,4 +16,5 @@ geffnet
 fire
 huggingface_hub
 rich
+gradio
 ruamel.yaml

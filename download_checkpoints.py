@@ -73,7 +73,6 @@ def download_checkpoints(
                 subfolder="expert_weights"
             )
             total_size += get_hf_file_metadata(url).size
-
         for model in download_models:
             url = hf_hub_url(
                 filename=f"pytorch_model.bin",
@@ -120,7 +119,6 @@ def download_checkpoints(
                 progress.advance(model_task)
                 progress.advance(total_task)
         progress.print("[green]Done!")
-
 
 if __name__ == "__main__":
     Fire(download_checkpoints)
