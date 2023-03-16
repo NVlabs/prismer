@@ -17,6 +17,7 @@ parser.add_argument('--port', default='')
 
 parser.add_argument('--exp_name', default='', type=str)
 args = parser.parse_args()
+os.environ["PYTHONPATH"] = "."
 
 # load config
 config = yaml.load(open('configs/caption.yaml', 'r'), Loader=yaml.Loader)['demo']
