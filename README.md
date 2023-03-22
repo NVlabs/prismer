@@ -8,7 +8,7 @@ This repository contains the source code of **Prismer** and **PrismerZ** from th
 <img src="helpers/intro.png"  width="100%"/>
 
 ### Update Log
-- **Mar. 22, 2023**: Fix tensor mixmatch for the updated `transformers` package.
+- **Mar. 22, 2023**: Fix tensor mismatch problem for the updated `transformers` package.
 - **Mar. 13, 2023**: Add official HF Space demo. 
 
 ## Get Started
