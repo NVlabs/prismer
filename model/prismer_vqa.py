@@ -48,7 +48,6 @@ class PrismerVQA(Prismer):
 
                 experts_train = self.expert_encoder(experts)
                 experts_train = rearrange(experts_train, 'l b d -> b l d')  # batch_size, num_latents, output_dim
-                experts_train = experts_train.repeat_interleave(num_beams, dim=0)
                 outputs = self.text_decoder.generate(input_ids=input_ids,
                                                      encoder_hidden_states=experts_train,
                                                      attention_mask=attention_masks,

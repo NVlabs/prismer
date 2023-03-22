@@ -8,8 +8,8 @@ This repository contains the source code of **Prismer** and **PrismerZ** from th
 <img src="helpers/intro.png"  width="100%"/>
 
 ### Update Log
-- **TODO**: Improve demo inference speed by caching input images and expert labels via md5sum. 
-- **Mar. 13**: Add official HF Space demo. 
+- **Mar. 22, 2023**: Fix tensor mixmatch for the updated `transformers` package.
+- **Mar. 13, 2023**: Add official HF Space demo. 
 
 ## Get Started
 The implementation is based on `PyTorch 1.13`, and highly integrated with Huggingface [`accelerate`](https://github.com/huggingface/accelerate) toolkit for readable and optimised multi-node multi-gpu training.
