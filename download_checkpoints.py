@@ -30,7 +30,7 @@ _MODELS = [
     "pretrain_prismerz_large",
 ]
 
-_REPO_ID = "lorenmt/prismer"
+_REPO_ID = "shikunl/prismer"
 
 
 def download_checkpoints(

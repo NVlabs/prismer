@@ -1,6 +1,6 @@
 # Prismer
 [![arXiv](https://img.shields.io/badge/arXiv-2303.02506-b31b1b.svg)](https://arxiv.org/abs/2303.02506)
- [![Hugginface Space](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-sm-dark.svg)](https://huggingface.co/spaces/lorenmt/prismer)
+ [![Hugginface Space](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-sm-dark.svg)](https://huggingface.co/spaces/shikunl/prismer)
 
 
 This repository contains the source code of **Prismer** and **PrismerZ** from the paper, [Prismer: A Vision-Language Model with An Ensemble of Experts](https://shikun.io/projects/prismer). Check out our official demo at [HuggingFace Space](https://huggingface.co/spaces/lorenmt/prismer) and a third-party demo at [Replicate](https://replicate.com/cjwbw/prismer).
