@@ -21,13 +21,9 @@ pip install -r requirements.txt
 ```
 
 ### Prepare Accelerator Config
-Then we generate the corresponding `accelerate`  config based on your training server configuration. For both single-node multi-gpu and multi-node multi-gpu training, simply run
+Then we generate the corresponding `accelerate`  config based on your training server configuration. For both single-node multi-gpu and multi-node multi-gpu training, simply run and follow the instructions with,
 ```bash
-# to get your machine rank 0 IP address
-hostname -i
-
-# and for each machine, run the following command, set --num_machines 1 in a single-node setting
-python generate_config.py —-main_ip {MAIN_IP} -—rank {MACHINE_RANK} —-num_machines {TOTAL_MACHINES}
+accelerate config
 ```
 
 ## Datasets
