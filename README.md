@@ -136,11 +136,11 @@ If you found this code/work to be useful in your own research, please considerin
 
 
 ```bibtex
-@article{liu2023prismer,
-    title={Prismer: A Vision-Language Model with An Ensemble of Experts},
+@article{liu2024prismer,
+    title={Prismer: A Vision-Language Model with Multi-Task Experts},
     author={Liu, Shikun and Fan, Linxi and Johns, Edward and Yu, Zhiding and Xiao, Chaowei and Anandkumar, Anima},
-    journal={arXiv preprint arXiv:2303.02506},
-    year={2023}
+    journal={Transactions on Machine Learning Research},
+    year={2024}
 }
 ```
 
